@@ -11,7 +11,6 @@ const Dashboard = () => {
   }, []);
 
   async function getMesses() {
-    console.log("called");
     try {
       const response = await axios.get("http://localhost:3000/admin/listMess", {
         headers: {
@@ -21,7 +20,6 @@ const Dashboard = () => {
       setMesses(response.data.messes);
     } catch (error) {
       console.error("Something went wrong", error);
-      res.status(500).json({ msg: "Internal Server Error" });
     }
   }
   return (

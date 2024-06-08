@@ -4,14 +4,13 @@ import toast from "react-hot-toast";
 
 const Mess = ({ mess ,getMesses}) => {
   const { messName,adminName,adminUsername } = mess;
-  console.log(mess);
 
 const handleDelete = async () => {
     try {
       const response = await axios.delete(
         "http://localhost:3000/admin/deleteMess",
         {
-          data: { messId:mess._id }, // Send data as object with key 'data'
+          data: { messId:mess._id }, 
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
