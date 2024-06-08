@@ -52,27 +52,27 @@ router.post("/create",authorizeAdmin,async (req,res)=>{
 })
 
 //get list of messes
-router.get("/listMess",authorizeAdmin,async (req,res)=>{
-    try{
+router.get("/listMess", authorizeAdmin, async (req, res) => {
+    try {
         const messes = await Mess.find();
-        res.status(200).json({messes});
+        const messData = await Promise.all(messes.map(async (mess) => {
+            const admin = await MessAdmin.findOne({ messAccess: mess._id });
+            return { _id: mess._id, messName: mess.messName, adminName: admin.name, adminUsername: admin.username };
+        }));
+        res.status(200).json({ messes: messData });
+    } catch (error) {
+        console.error("Something went wrong", error);
+        res.status(500).json({ msg: "Internal Server Error" });
     }
-    catch(error)
-    {
-        console.error("Something went wrong",error);
-        res.status(500).json({msg : "Internal Server Error"});
-    }
-})
+});
 
 
 //delete a mess
 router.delete("/deleteMess",authorizeAdmin,async (req,res)=>{
     try{
         const {messId} = req.body;
-        console.log(messId);
         const messAdmin = await MessAdmin.findOne({messAccess : messId});
         const messAdminId = messAdmin._id;
-        console.log(messAdminId);
         const messDeleted = await Mess.findByIdAndDelete(messId);
         if(!messDeleted) res.status(404).json({msg : "Mess not found"});
         const messAdminDeleted = await MessAdmin.findByIdAndDelete(messAdminId); 
