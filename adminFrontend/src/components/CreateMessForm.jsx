@@ -24,6 +24,10 @@ const CreateMessForm = ({ getMesses }) => {
       if (response.data.msg === "Mess Created Successfully") {
         toast.success("Mess Created Successfully");
         getMesses();
+        setMessName("");
+        setAdminName("");
+        setAdminUsername("");
+        setAdminPassword("");
       }
     } catch (error) {
       toast.error(error.response.data.msg);

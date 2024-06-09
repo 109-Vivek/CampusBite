@@ -3,7 +3,7 @@ import axios from 'axios';
 import UpdateSchedule from './UpdateSchedule';
 
 const Dashboard = () => {
-  const [messData, setMessData] = useState(null); // Initialize as null instead of {}
+  const [messData, setMessData] = useState(null); 
 
   useEffect(() => {
     getMessData();
@@ -17,6 +17,7 @@ const Dashboard = () => {
         }
       });
       setMessData(response.data);
+      console.log(response.data.messSchedule);
     } catch (error) {
       console.error('Error fetching mess schedule:', error);
     }
@@ -25,7 +26,7 @@ const Dashboard = () => {
   return (
     <div>
       {messData && <div className='text-center font-bold text-xl p-2 m-4'>Welcome to {messData.messName}</div>}
-      {messData && <UpdateSchedule messSchedule={messData.messSchedule} />}
+      {messData &&  <UpdateSchedule messSchedule={messData.messSchedule} />}
     </div>
   );
 };

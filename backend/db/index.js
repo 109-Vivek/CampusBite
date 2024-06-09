@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 
-mongoose.connect('mongodb://localhost:27017/CampusBite');
+// mongoose.connect('mongodb://localhost:27017/CampusBite');
+
+mongoose.connect('mongodb://localhost:27017/Campus_Bite');
 
 
 //Student Schema
@@ -32,46 +34,46 @@ const studentSchema = new mongoose.Schema(
 //Schedule object structure
 const schedule  = {
     Sunday : {
-        breakfast : [],
-        lunch : [],
-        snacs : [],
-        dinner : [],
+        breakfast : "",
+        lunch : "",
+        snacks : "",
+        dinner : "",
     },
     Monday : {
-        breakfast : [],
-        lunch : [],
-        snacs : [],
-        dinner : [],
+        breakfast : "",
+        lunch : "",
+        snacks : "",
+        dinner : "",
     },
     Tuesday : {
-        breakfast : [],
-        lunch : [],
-        snacs : [],
-        dinner : []
+        breakfast : "",
+        lunch : "",
+        snacks : "",
+        dinner : ""
     },
     Wednesday : {
-        breakfast : [],
-        lunch : [],
-        snacs : [],
-        dinner : []
+        breakfast : "",
+        lunch : "",
+        snacks : "",
+        dinner : ""
     },
     Thursday  : {
-        breakfast : [],
-        lunch : [],
-        snacs : [],
-        dinner : []
+        breakfast : "",
+        lunch : "",
+        snacks : "",
+        dinner : ""
     },
     Friday  : {
-        breakfast : [],
-        lunch : [],
-        snacs : [],
-        dinner : []
+        breakfast : "",
+        lunch : "",
+        snacks : "",
+        dinner : ""
     },
     Saturday : {
-        breakfast : [],
-        lunch : [],
-        snacs : [],
-        dinner : []
+        breakfast : "",
+        lunch : "",
+        snacks : "",
+        dinner : ""
     }
 }
 
