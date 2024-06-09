@@ -13,7 +13,8 @@ const Signin = () => {
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:3000/messadmin/signin", { username, password })
-      if(response.data === "Invalid Username" || response.data === "Incorrect Password")
+      console.log(response);
+      if(response.data === "Invalid Username or password")
       {
         toast.error(response.data);
         return;

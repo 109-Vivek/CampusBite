@@ -57,10 +57,15 @@ const scheduleSchema = zod.object({
 router.post("/signin", async (req, res) => {
   const { username, password } = req.body;
   const admin = await MessAdmin.findOne({ username });
-  if (!admin) res.json("Mess Admin Not Found");
-  else {
+  if (!admin) {
+    res.json("Mess Admin Not Found");
+    return;
+  } else {
     const match = await bcrypt.compare(password, admin.password);
-    if (!match) res.json("Invalid Username or password");
+    if (!match) {
+      res.json("Invalid Username or password");
+      return;
+    }
 
     const token = jwt.sign({ username, password }, messAdminJWTSecret);
     res.json({ token });
@@ -108,7 +113,7 @@ router.put("/updateSchedule", authorizeMessAdmin, async (req, res) => {
     const messData = await Mess.findById(messId);
     messData.messSchedule = schedule;
     messData.save();
-    res.status(200).json({msg : "Schedule Updated Successfully"});
+    res.status(200).json({ msg: "Schedule Updated Successfully" });
   } catch (error) {
     res.status(500).json({ msg: "Internal Server Error" });
   }
