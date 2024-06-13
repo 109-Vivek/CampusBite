@@ -33,27 +33,6 @@ const CreateMessForm = ({ getMesses }) => {
       toast.error(error.response.data.msg);
     }
   };
-  async function handleCreate() {
-    const token = localStorage.getItem("token");
-    axios
-      .post(
-        "http://localhost:3000/user/createtodo",
-        {
-          title: title,
-          description: description,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then(() => {
-        setTitle("");
-        setDescription("");
-        fetchTodos();
-      });
-  }
 
   return (
     <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded shadow-md">
