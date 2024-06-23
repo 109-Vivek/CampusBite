@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 
-// mongoose.connect('mongodb://localhost:27017/CampusBite');
-
-mongoose.connect('mongodb://localhost:27017/Campus_Bite');
+mongoose.connect('mongodb://localhost:27017/Campus_Bite'); //not the right way use .env file
 
 
 //Student Schema
