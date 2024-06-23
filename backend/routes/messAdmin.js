@@ -58,12 +58,12 @@ router.post("/signin", async (req, res) => {
   const { username, password } = req.body;
   const admin = await MessAdmin.findOne({ username });
   if (!admin) {
-    res.json("Mess Admin Not Found");
+    res.status(400).json("Mess Admin Not Found");
     return;
   } else {
     const match = await bcrypt.compare(password, admin.password);
     if (!match) {
-      res.json("Invalid Username or password");
+      res.status(400).json("Invalid Username or password");
       return;
     }
 
