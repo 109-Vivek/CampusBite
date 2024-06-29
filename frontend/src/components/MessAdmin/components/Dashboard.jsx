@@ -11,7 +11,7 @@ const Dashboard = () => {
 
   const getMessData = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/messAdmin/messData', {
+      const response = await axios.get( `${import.meta.env.VITE_SERVER_URL}/messadmin/messData`, {
         headers: {
           'Authorization': 'Bearer ' + localStorage.getItem('mess_admin_token')
         }
