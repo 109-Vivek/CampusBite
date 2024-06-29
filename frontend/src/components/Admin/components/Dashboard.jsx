@@ -13,11 +13,14 @@ const Dashboard = () => {
 
   async function getMesses() {
     try {
-      const response = await axios.get("http://localhost:3000/admin/listMess", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("admin_token")}`,
-        },
-      });
+      const response = await axios.get(
+        `${import.meta.env.VITE_SERVER_URL}/admin/listMess`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("admin_token")}`,
+          },
+        }
+      );
       setMesses(response.data.messes);
     } catch (error) {
       console.error("Something went wrong", error);

@@ -16,9 +16,11 @@ const Dashboard = () => {
   async function getPrimaryMess() {
     try {
       const response = await axios.get(
-        "http://localhost:3000/student/primarymess",
+        `${import.meta.env.VITE_SERVER_URL}/student/primarymess`,
         {
-          headers: { Authorization: `Bearer ${localStorage.getItem("student_token")}` },
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("student_token")}`,
+          },
         }
       );
       setCurrMess(response.data.messId);
@@ -30,11 +32,14 @@ const Dashboard = () => {
 
   async function getMesses() {
     try {
-      const response = await axios.get("http://localhost:3000/student/messes", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("student_token")}`,
-        },
-      });
+      const response = await axios.get(
+        `${import.meta.env.VITE_SERVER_URL}/student/messes`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("student_token")}`,
+          },
+        }
+      );
       setMesses(response.data.messes);
     } catch (error) {
       console.error("Something went wrong", error);
@@ -44,7 +49,7 @@ const Dashboard = () => {
   async function setPrimary() {
     try {
       const response = await axios.put(
-        "http://localhost:3000/student/setPrimaryMess",
+        `${import.meta.env.VITE_SERVER_URL}/student/setPrimaryMess`,
         { primaryMessId: currMess },
         {
           headers: {
@@ -96,7 +101,9 @@ const Dashboard = () => {
       {currMess &&
         messes &&
         (currMess === "Primary Mess not set" ? (
-          <div className="text-white">Primary Mess not set ! <br></br>Click on any mess and set as primary</div>
+          <div className="text-white">
+            Primary Mess not set ! <br></br>Click on any mess and set as primary
+          </div>
         ) : (
           <DisplaySchedule
             schedule={messes.find((mess) => mess._id === currMess).messSchedule}

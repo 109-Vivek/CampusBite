@@ -1,41 +1,46 @@
 import axios from "axios";
 import React, { useState } from "react";
-import {useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 
 const Signin = () => {
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigateTo = useNavigate();
 
-   const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/messadmin/signin", { username, password })
+      const response = await axios.post(
+        `${import.meta.env.VITE_SERVER_URL}/messadmin/signin`,
+
+        { username, password }
+      );
       console.log(response);
-      if(response.data === "Invalid Username or password")
-      {
+      if (response.data === "Invalid Username or password") {
         toast.error(response.data);
         return;
-      }
-      else{
+      } else {
         toast.success("Signin Successfull");
-        localStorage.setItem("mess_admin_token",response.data.token);
+        localStorage.setItem("mess_admin_token", response.data.token);
         navigateTo("/mess-admin/dashboard");
       }
-    }
-    catch(error)
-    {
+    } catch (error) {
       toast.error("Error Signing in");
     }
   };
 
   return (
     <div className="w-full max-w-xs mx-auto mt-8">
-      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      >
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="username"
+          >
             Username
           </label>
           <input
@@ -44,11 +49,14 @@ const Signin = () => {
             type="text"
             placeholder="Username"
             value={username}
-            onChange={(e)=>setUsername(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="password"
+          >
             Password
           </label>
           <input
@@ -57,7 +65,7 @@ const Signin = () => {
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(e)=>setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="flex items-center justify-between">

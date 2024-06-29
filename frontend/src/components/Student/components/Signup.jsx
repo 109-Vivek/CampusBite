@@ -13,17 +13,16 @@ const Signin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(password !== confirmPassword)
-      {
-        toast.error("Passwords do not match");
-        setPassword("");
-        setConfirmPassword("");
-        return ;
-      }
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      setPassword("");
+      setConfirmPassword("");
+      return;
+    }
     try {
       const response = await axios.post(
-        "http://localhost:3000/student/signup",
-        {rollNumber,password,name,isVegetarian}
+        `${import.meta.env.VITE_SERVER_URL}/student/signup`,
+        { rollNumber, password, name, isVegetarian }
       );
       if (response.data.msg === "User created Successfully") {
         toast.success("Signin Successfull");
@@ -80,12 +79,12 @@ const Signin = () => {
         </div>
 
         <div className="mb-4">
-            <label className="mr-2"> Is Vegetarian ? </label>
-            <input
-              type="checkbox"
-              checked={isVegetarian}
-              onChange={(e) => setIsVegetarian(e.target.checked)}
-            />
+          <label className="mr-2"> Is Vegetarian ? </label>
+          <input
+            type="checkbox"
+            checked={isVegetarian}
+            onChange={(e) => setIsVegetarian(e.target.checked)}
+          />
         </div>
 
         <div className="mb-4">

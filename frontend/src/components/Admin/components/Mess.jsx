@@ -9,7 +9,7 @@ const Mess = ({ mess, getMesses }) => {
   const handleDelete = async () => {
     try {
       const response = await axios.delete(
-        "http://localhost:3000/admin/deleteMess",
+        `${import.meta.env.VITE_SERVER_URL}/admin/deleteMess`,
         {
           data: { messId: mess._id },
           headers: {
