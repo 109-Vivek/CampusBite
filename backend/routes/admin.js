@@ -3,10 +3,10 @@ const {Router} = require("express");
 const router = Router();
 const bcrypt=require("bcrypt");
 const jwt = require("jsonwebtoken");
-const {adminJWTSecret, scheduleTemplate} = require("../config");
+const ADMIN_JWT_SECRET = process.env.ADMIN_JWT_SECRET;
 const {authorizeAdmin} = require("../middlewares/admin");
 
-    
+
 
 //Signin
 router.post("/signin",async (req,res)=>{
@@ -25,7 +25,7 @@ router.post("/signin",async (req,res)=>{
             return;
         }
 
-        const token = jwt.sign({username,password},adminJWTSecret);
+        const token = jwt.sign({username,password},ADMIN_JWT_SECRET);
         res.json({token});
     }
 })
@@ -85,6 +85,51 @@ router.delete("/deleteMess",authorizeAdmin,async (req,res)=>{
         res.status(500).json({msg : "Internal Server Error"});
     }
 })
+
+const scheduleTemplate  = {
+    Sunday : {
+        breakfast : "",
+        lunch : "",
+        snacks : "",
+        dinner : ""
+    },
+    Monday : {
+        breakfast : "",
+        lunch : "",
+        snacks : "",
+        dinner : "",
+    },
+    Tuesday : {
+        breakfast : "",
+        lunch : "",
+        snacks : "",
+        dinner : ""
+    },
+    Wednesday : {
+        breakfast : "",
+        lunch : "",
+        snacks : "",
+        dinner : ""
+    },
+    Thursday  : {
+        breakfast : "",
+        lunch : "",
+        snacks : "",
+        dinner : ""
+    },
+    Friday  : {
+        breakfast : "",
+        lunch : "",
+        snacks : "",
+        dinner : ""
+    },
+    Saturday : {
+        breakfast : "",
+        lunch : "",
+        snacks : "",
+        dinner : ""
+    }
+}
 
 module.exports = router;
 

@@ -8,17 +8,13 @@ import MessAdmin from "./components/MessAdmin/MessAdmin";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div>
-        <div>
-          <Toaster />
-        </div>
+    <BrowserRouter >
+        <Toaster />
         <Routes>
           <Route path="/student/*" element={<Student />}></Route>
           <Route path="/mess-admin/*" element={<MessAdmin />}></Route>
           <Route path="/admin/*" element={<Admin/>}></Route>
         </Routes>
-      </div>
     </BrowserRouter>
   );
 }

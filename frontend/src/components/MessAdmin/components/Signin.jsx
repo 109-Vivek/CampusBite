@@ -21,8 +21,8 @@ const Signin = () => {
       }
       else{
         toast.success("Signin Successfull");
-        localStorage.setItem("token",response.data.token);
-        navigateTo("/dashboard");
+        localStorage.setItem("mess_admin_token",response.data.token);
+        navigateTo("/mess-admin/dashboard");
       }
     }
     catch(error)

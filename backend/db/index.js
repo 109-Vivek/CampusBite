@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 
-mongoose.connect('mongodb://localhost:27017/Campus_Bite'); //not the right way use .env file
+const DATABASE_URL = process.env.DATABASE_URL || 'mongodb://localhost:27017/Campus_Bite';
+
+mongoose.connect(DATABASE_URL); 
 
 
 //Student Schema

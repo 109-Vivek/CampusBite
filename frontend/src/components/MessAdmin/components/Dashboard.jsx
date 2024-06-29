@@ -13,7 +13,7 @@ const Dashboard = () => {
     try {
       const response = await axios.get('http://localhost:3000/messAdmin/messData', {
         headers: {
-          'Authorization': 'Bearer ' + localStorage.getItem('token')
+          'Authorization': 'Bearer ' + localStorage.getItem('mess_admin_token')
         }
       });
       setMessData(response.data);
@@ -24,8 +24,8 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
-      {messData && <div className='text-center font-bold text-xl p-2 m-4'>Welcome to {messData.messName}</div>}
+    <div className='flex flex-col w-[min(1000px,100%)] relative'>
+      {messData && <div className='text-center text-white font-bold text-xl p-2 m-4'>Welcome to {messData.messName}</div>}
       {messData &&  <UpdateSchedule messSchedule={messData.messSchedule} />}
     </div>
   );

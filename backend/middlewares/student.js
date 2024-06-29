@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { studentJWTSecret} = require("../config.js")
+const STUDENT_JWT_SECRET = process.env.STUDENT_JWT_SECRET;
 
 //admin authentication logic comes here
 function authorizeStudent(req,res,next)
@@ -7,7 +7,7 @@ function authorizeStudent(req,res,next)
     const {authorization} = req.headers;
     const token = authorization.split(" ")[1];
     try{
-        const decoded = jwt.verify(token,studentJWTSecret);
+        const decoded = jwt.verify(token,STUDENT_JWT_SECRET);
         next();
     }catch(error)
     {

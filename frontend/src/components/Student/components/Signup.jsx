@@ -27,8 +27,8 @@ const Signin = () => {
       );
       if (response.data.msg === "User created Successfully") {
         toast.success("Signin Successfull");
-        localStorage.setItem("token", response.data.token);
-        navigateTo("/signin");
+        localStorage.setItem("student_token", response.data.token);
+        navigateTo("/student/signin");
         return;
       } else {
         toast.error(response.data.msg);

@@ -4,7 +4,7 @@ const { Router } = require("express");
 const router = Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { studentJWTSecret } = require("../config");
+const STUDENT_JWT_SECRET = process.env.STUDENT_JWT_SECRET;
 
 //Signup
 router.post("/signup", async (req, res) => {
@@ -39,7 +39,7 @@ router.post("/signin", async (req, res) => {
     if (!match) {
       res.json("Invalid Username or password");
     } else {
-      const token = jwt.sign({ rollNumber }, studentJWTSecret);
+      const token = jwt.sign({ rollNumber }, STUDENT_JWT_SECRET);
       res.json({ token });
     }
   }

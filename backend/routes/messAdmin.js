@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { Mess, MessAdmin } = require("../db/index");
 const zod = require("zod");
-const { messAdminJWTSecret } = require("../config");
+const MESS_ADMIN_JWT_SECRET = process.env.MESS_ADMIN_JWT_SECRET;
 const { authorizeMessAdmin } = require("../middlewares/messAdmin");
 
 //zod validation schema for the above mess schedule
@@ -67,7 +67,7 @@ router.post("/signin", async (req, res) => {
       return;
     }
 
-    const token = jwt.sign({ username, password }, messAdminJWTSecret);
+    const token = jwt.sign({ username, password }, MESS_ADMIN_JWT_SECRET);
     res.json({ token });
   }
 });

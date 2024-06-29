@@ -20,8 +20,8 @@ const Signin = () => {
       }
       else{
         toast.success("Signin Successfull");
-        localStorage.setItem("token",response.data.token);
-        navigateTo("/dashboard");
+        localStorage.setItem("student_token",response.data.token);
+        navigateTo("/student/dashboard");
       }
     }
     catch(error)

@@ -5,7 +5,7 @@ import Dashboard from "./components/Dashboard";
 
 function Student() {
   return (
-    <div>
+    <div className="bg-[#111827] w-[100vw] h-[100vh] flex justify-center items-center flex-col">
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
