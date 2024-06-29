@@ -33,7 +33,7 @@ const UpdateSchedule = ({ messSchedule }) => {
   async function updateSchedule() {
     try {
       const response = await axios.put(
-        "http://localhost:3000/messadmin/updateSchedule",
+         `${import.meta.env.VITE_SERVER_URL}/messadmin/updateSchedule`,
         { schedule },
         {
           headers: {
