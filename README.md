@@ -1,7 +1,24 @@
 # CampusBite
+-Developed a web application to manage college campus mess operations.
+-Administrators update mess schedules, ensuring changes are instantly reflected in the React-powered interface for students.
+-Provided students with access to view schedules for different campus mess facilities.
+-Implemented with Node.js and Express, secure authentication mechanisms for both Mess Admins and students, ensuring secure access.
 
-## Imporvements
- 
- - use .env file for mongodb url and port numbers   // this is becuase when you put this in github anyone can see the url and that ruins the security . The secured option is .env file
- - add global catches for error handling
+[### Student Credentials : ](https://campus-bite.vercel.app/student/signin)
+Roll Number: 12345678
+Password:  rahul
+
+[### Mess Admin Credentials : ](https://campus-bite.vercel.app/mess-admin/signin)
+ Username: ram@gmail.com
+ Password: ram
+
+[### Admin Credentials : ](https://campus-bite.vercel.app/admin/signin)
+ Username: vivekyadavnitt@gmail.com 
+ Password: vivek
+
+
+
+
+
+
  
