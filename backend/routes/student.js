@@ -33,17 +33,19 @@ router.post("/signin", async (req, res) => {
   const user = await Student.findOne({ rollNumber });
 
   if (!user) {
-    res.json("Invalid Username or password");
+    res.json("Invalid Roll Number");
+    return ;
   } else {
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-      res.json("Invalid rollNumber or password");
-    } else {
-      const token = jwt.sign({ rollNumber }, STUDENT_JWT_SECRET);
-      res.json({ token });
-    }
+      res.json("Incorrect Password");
+      return ;
+    } 
+    const token = jwt.sign({ rollNumber }, STUDENT_JWT_SECRET);
+    res.json({ token });
   }
 });
+
 
 //Get a list of messes in the campus
 router.get("/messes", authorizeStudent, async (req, res) => {
