@@ -24,7 +24,7 @@ const Signin = () => {
       } else {
         toast.success("Signin Successfull");
         localStorage.setItem("student-token", response.data.token);
-        navigateTo("/admin/dashboard");
+        navigateTo("/student/dashboard");
       }
     } catch (error) {
       toast.error("Error Signing in");
