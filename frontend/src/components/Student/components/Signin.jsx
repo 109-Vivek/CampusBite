@@ -15,13 +15,16 @@ const Signin = () => {
         `${import.meta.env.VITE_SERVER_URL}/student/signin`,
         { rollNumber, password }
       );
-      if (response.data === "Invalid rollNumber or password") {
+      if (
+        response.data === "Invalid Roll Number" ||
+        response.data === "Incorrect Password"
+      ) {
         toast.error(response.data);
         return;
       } else {
         toast.success("Signin Successfull");
-        localStorage.setItem("student_token", response.data.token);
-        navigateTo("/student/dashboard");
+        localStorage.setItem("student-token", response.data.token);
+        navigateTo("/admin/dashboard");
       }
     } catch (error) {
       toast.error("Error Signing in");
