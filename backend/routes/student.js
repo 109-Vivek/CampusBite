@@ -37,7 +37,7 @@ router.post("/signin", async (req, res) => {
   } else {
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-      res.json("Invalid Username or password");
+      res.json("Invalid rollNumber or password");
     } else {
       const token = jwt.sign({ rollNumber }, STUDENT_JWT_SECRET);
       res.json({ token });
