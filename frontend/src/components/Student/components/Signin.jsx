@@ -23,7 +23,7 @@ const Signin = () => {
         return;
       } else {
         toast.success("Signin Successfull");
-        localStorage.setItem("student-token", response.data.token);
+        localStorage.setItem("student_token", response.data.token);
         navigateTo("/student/dashboard");
       }
     } catch (error) {
