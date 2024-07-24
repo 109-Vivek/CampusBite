@@ -16,6 +16,10 @@ app.use("/student",studentRoute);
 app.use("/messadmin",messAdminRoute);
 app.use("/admin",adminRoute);
 
+app.get("/", (req, res) => {
+  res.send("Your backend is up and running");
+});
+
 
 const PORT = process.env.PORT || 5000;
 
