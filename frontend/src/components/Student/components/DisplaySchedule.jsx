@@ -35,7 +35,7 @@ const DisplaySchedule = ({ schedule }) => {
         </div>
         <div className="flex flex-col p-2 gap-4">
           <div className="font-semibold">Snacks : </div>
-          <div className="italic" >{schedule[day].dinner}</div>
+          <div className="italic" >{schedule[day].snacks}</div>
         </div>
         <div className="flex flex-col p-2 gap-4">
           <div className="font-semibold">Dinner : </div>
